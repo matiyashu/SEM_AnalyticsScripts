@@ -10,7 +10,7 @@ from google.cloud import bigquery
 # Authentication for Google Analytics & BigQuery API calls
 
 scope = 'https://www.googleapis.com/auth/analytics.readonly'
-credentials = service_account.Credentials.from_service_account_file('/Users/Tanner/utils/googlecloud_auth.json')
+credentials = service_account.Credentials.from_service_account_file('/Users/prima/utils/googlecloud_auth.json')
 service = build('analytics', 'v3', credentials=credentials)
 
 
@@ -86,12 +86,12 @@ def main(client_id):
 	print(base_df.head())
 
 	# csv output
-	base_df.to_csv('/Users/Tanner/Desktop/example-export-ga.csv') #change to desired file path / file name
+	base_df.to_csv('/Users/prima/Desktop/example-export-ga.csv') #change to desired file path / file name
 
 	#bigquery output
 	base_df.to_gbq(
 		'raw_data.t_googleanalytics_data', #dataset name + table name
-		'client-test-275515', #project name
+		'client-test-00000', #project name
 		chunksize=10000,
 		reauth=False,
 		if_exists='replace',
