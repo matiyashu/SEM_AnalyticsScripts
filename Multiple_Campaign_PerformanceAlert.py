@@ -47,6 +47,12 @@ def googleads_performance_check():
 
 	performance = bigquery_client.query(sql, job_config=job_config).result().to_dataframe()
 
+	
+	### AD rank Analysis##
+	
+	adRank = ads_data['Max CPC Bid'] * ads_data['Quality Score (hist.)']
+	# need more experiment
+
 	### CTR Performance Check by Campaign ###
 
 	ctr_threshold = 0.10 # Set based on your preferred criteria
